@@ -1,10 +1,13 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
+const router = require("./src/routes/api");
 require("dotenv").config();
 
 app.use(express.json());
 app.set("view engine", "ejs");
+
+app.use(express.static(__dirname + "/public"));
 
 // server
 const port = process.env.PORT || 8000;
@@ -19,9 +22,7 @@ mongoose
   })
   .catch((err) => console.log(err));
 
-app.get("/abcd", (req, res) => {
-  res.status(200).json({ status: "success", data: "data existed" });
-});
+app.use("/", router);
 
 // Undefined Route Implement
 app.use("*", (req, res) => {
