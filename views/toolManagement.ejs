@@ -15,79 +15,109 @@
     <%- include('partials/header') %>
 
     <section class="container">
-      <!--  -->
-      <p id="responseSuccessMsg"></p>
-      <p id="responseFailedMsg"></p>
-      <!--  -->
+      <!-- alert message start -->
+      <div
+        id="responseSuccessMsg"
+        class="alert alert-success text-center w-50 mx-auto mt-3"
+        role="alert"></div>
+      <div
+        id="responseFailedMsg"
+        class="alert alert-danger text-center w-50 mx-auto mt-3"
+        role="alert"></div>
+      <!-- alert message end -->
+
+      <hr style="border: 1px solid #000" />
+      <h3 class="text-center">Add A New Tool</h3>
       <form id="createToolForm">
-        <div class="mb-3">
-          <label for="code" class="form-label">Code</label>
-          <input
-            type="number"
-            class="form-control"
-            id="code"
-            name="code"
-            required />
+        <div class="row mb-3">
+          <label for="code" class="col-sm-2 col-form-label">Code</label>
+          <div class="col-sm-10">
+            <input
+              type="number"
+              class="form-control"
+              id="code"
+              name="code"
+              required />
+          </div>
         </div>
 
-        <div class="mb-3">
-          <label for="name" class="form-label">Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            name="name"
-            required />
+        <div class="row mb-3">
+          <label for="name" class="col-sm-2 col-form-label">Name</label>
+          <div class="col-sm-10">
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              name="name"
+              required />
+          </div>
         </div>
 
-        <div class="mb-3">
-          <label for="price" class="form-label">Price</label>
-          <input
-            type="number"
-            class="form-control"
-            id="price"
-            name="price"
-            required />
+        <div class="row mb-3">
+          <label for="price" class="col-sm-2 col-form-label">Price</label>
+          <div class="col-sm-10">
+            <input
+              type="number"
+              class="form-control"
+              id="price"
+              name="price"
+              required />
+          </div>
         </div>
 
-        <div class="mb-3">
-          <label for="category" class="form-label">Category</label>
-          <input
-            type="text"
-            class="form-control"
-            id="category"
-            name="category"
-            required />
+        <div class="row mb-3">
+          <label for="category" class="col-sm-2 col-form-label">Category</label>
+          <div class="col-sm-10">
+            <input
+              type="text"
+              class="form-control"
+              id="category"
+              name="category"
+              required />
+          </div>
         </div>
 
-        <div class="mb-3">
-          <label for="description" class="form-label">Description</label>
-          <textarea
-            class="form-control"
-            id="description"
-            name="description"
-            rows="3"
-            required></textarea>
+        <div class="row mb-3">
+          <label for="description" class="col-sm-2 col-form-label"
+            >Description</label
+          >
+          <div class="col-sm-10">
+            <textarea
+              class="form-control"
+              id="description"
+              name="description"
+              rows="3"
+              required></textarea>
+          </div>
         </div>
 
-        <div class="mb-3">
-          <label for="image" class="form-label">Image URL</label>
-          <input
-            type="text"
-            class="form-control"
-            id="image"
-            name="image"
-            required />
+        <div class="row mb-3">
+          <label for="image" class="col-sm-2 col-form-label">Image</label>
+          <div class="col-sm-10">
+            <input
+              type="text"
+              class="form-control"
+              id="image"
+              name="image"
+              required />
+          </div>
         </div>
 
-        <button type="button" class="btn btn-primary" onclick="submitForm()">
-          Create Tool
-        </button>
+        <div class="d-flex justify-content-center">
+          <button
+            type="button"
+            class="text-white py-2 px-5"
+            style="background: #deb887; border: 1px solid #deb887"
+            onclick="submitForm()">
+            Add Tool
+          </button>
+        </div>
       </form>
     </section>
 
+    <hr class="container" style="border: 1px solid #000" />
     <!-- Table Data -->
-    <section class="table-responsive container mt-5">
+    <section class="table-responsive container mt-3">
       <table class="table">
         <thead class="table-dark">
           <tr>
@@ -99,7 +129,7 @@
             <th scope="col">Image File</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
           <% if (data?.length > 0) { %> <% data?.map(tool => { %>
           <tr>
             <th scope="row"><%= tool?.code %></th>
@@ -107,13 +137,15 @@
             <td><%= tool?.price %></td>
             <td><%= tool?.category %></td>
             <td><%= tool?.description %></td>
-            <td>
-              <img src="<%= tool.image %>" class="" alt="..." />
+            <td style="width: 150px">
+              <img src="<%= tool.image %>" class="w-100" alt="..." />
             </td>
           </tr>
           <% }); %> <% } else { %>
           <tr>
-            <td>Sorry! No Data Found!</td>
+            <td colspan="6" class="text-center fs-3 fw-semibold text-warning">
+              Sorry! No Data Found!
+            </td>
           </tr>
           <% } %>
         </tbody>
