@@ -16,14 +16,8 @@
 
     <section class="container">
       <!-- alert message start -->
-      <div
-        id="responseSuccessMsg"
-        class="alert alert-success text-center w-50 mx-auto mt-3"
-        role="alert"></div>
-      <div
-        id="responseFailedMsg"
-        class="alert alert-danger text-center w-50 mx-auto mt-3"
-        role="alert"></div>
+      <div id="responseSuccessMsg" role="alert"></div>
+      <div id="responseFailedMsg" role="alert"></div>
       <!-- alert message end -->
 
       <hr style="border: 1px solid #000" />
@@ -182,12 +176,27 @@
 
           if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
-
+            responseFailedMsg.classList.add(
+              "alert",
+              "alert-danger",
+              "text-center",
+              "w-50",
+              "mx-auto",
+              "mt-3"
+            );
             responseFailedMsg.innerText = responseData.data;
           }
 
           location.reload(true);
 
+          responseSuccessMsg.classList.add(
+            "alert",
+            "alert-success",
+            "text-center",
+            "w-50",
+            "mx-auto",
+            "mt-3"
+          );
           responseSuccessMsg.innerText = responseData.data;
 
           // Handle success, e.g., redirect or display a success message
