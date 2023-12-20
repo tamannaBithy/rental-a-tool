@@ -62,12 +62,13 @@
         <div class="row mb-3">
           <label for="category" class="col-sm-2 col-form-label">Category</label>
           <div class="col-sm-10">
-            <input
-              type="text"
-              class="form-control"
-              id="category"
-              name="category"
-              required />
+            <select class="form-select" id="category" name="category" required>
+              <option selected disabled>Choose...</option>
+              <option value="Hand Tools">Hand Tools</option>
+              <option value="Power Tools">Power Tools</option>
+              <option value="Measurement Tools">Measurement Tools</option>
+              <option value="Saw Tools">Saw Tools</option>
+            </select>
           </div>
         </div>
 
