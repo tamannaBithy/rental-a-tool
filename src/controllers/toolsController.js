@@ -19,7 +19,6 @@ exports.toolManage = async (req, res) => {
   try {
     // Fetch all tools from the ToolModel
     const data = await ToolModel.find({});
-    console.log(data);
     // Render the "toolManagement" view, passing the retrieved data to it
     res.render("toolManagement", { data: data });
   } catch (error) {
